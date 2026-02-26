@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'paladins-outline';
-    src: url('./assets/fonts/paladin/paladinsout.ttf') format('truetype');  
+    src: url('./Assets/Fonts/paladin/paladinsout.ttf') format('truetype');  
 }
 @font-face {
     font-family: 'paladins-solid';
-    src: url('./assets/fonts/paladin/paladins.ttf') format('truetype');
+    src: url('./Assets/Fonts/paladin/paladins.ttf') format('truetype');
 }
 /* 1. Define the animation */
 @keyframes fadeIn {
