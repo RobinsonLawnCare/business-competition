@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'paladins-outline';
+    src: url('./Assets/Fonts/paladin/paladinsout.ttf') format('truetype');  
+}
+@font-face {
+    font-family: 'paladins-solid';
+    src: url('./Assets/Fonts/paladin/paladins.ttf') format('truetype');
+}
+
+
 
 * {
     letter-spacing: 2px;
