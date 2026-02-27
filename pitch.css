@@ -7,6 +7,9 @@
     src: url('./Assets/Fonts/paladin/paladins.ttf') format('truetype');
 }
 
+p {
+    color: white;
+}
 
 
 * {
@@ -52,6 +55,28 @@
     margin-top: 1px;
 }
 
+/* Title Slide Specifics */
+.title-slide .left-content-stack {
+    justify-content: center; /* Centers logo/text vertically against the image */
+    gap: 20px;
+}
+
+.title-slide .divider {
+    width: 100%; /* Makes the green line span the full left column width */
+    margin: 20px 0;
+    align-self: flex-start;
+}
+
+.title-slide .logo {
+    align-items: flex-start; /* Aligns "Robinson" and "Lawn Care" to the left */
+}
+
+/* Ensure the title image takes full visual height of the container */
+.title-slide .side-hero-img {
+    height: 600px; /* Or whatever height fits your content best */
+    /* box-shadow: 0 0 40px rgba(50, 168, 82, 0.2);  */
+}
+
 /* Slide Labels (Using your Paladins Style) */
 .slide-label {
     font-family: 'paladins-outline';
@@ -59,6 +84,8 @@
     color: #32a852;
     margin-bottom: 40px;
     position: relative;
+    text-align: center;
+    letter-spacing: 4px;
 }
 .slide-label::before {
     content: attr(data-text);
@@ -224,31 +251,39 @@
     justify-content: space-between;
 }
 
-/* Targeted override for the GTM slide images */
-.gtm-slide .solution-grid {
+
+/* Market Strategy Gallery Fix */
+.gtm-gallery {
     display: flex;
-    justify-content: space-around; /* Distributes space around items */
-    align-items: center;           /* Vertically centers them */
-    flex-wrap: wrap;               /* Allows wrapping on smaller screens */
-    gap: 20px;
-    margin-top: 60px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 40px;
+    height: 60vh; /* Limits the height so they don't go off-screen */
 }
 
-/* Ensure the picture containers don't fight the layout */
-.gtm-slide .pic {
-    flex: 0 1 auto; /* Allows them to maintain their size but stay flexible */
-    width: auto;    /* Overrides fixed widths if necessary */
-    max-width: 35%; /* Ensures 3 items fit on one row */
-    padding: 0;
-    border: none;
-    background: none;
+.gtm-device-frame {
+    flex: 1;
+    max-width: 400px; /* Prevents images from getting too wide */
+    height: 90%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
 }
 
-.gtm-slide .pic img {
-    width: 100%;    /* Makes image responsive to the .pic container */
+.gtm-device-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes all images fill the frame uniformly */
+    object-position: top; /* Ensures we see the header of the website/app */
+}
+
+/* Remove the old IDs that were causing the size conflicts */
+#website-img, #website-pic {
+    width: auto;
     height: auto;
-    border-radius: 15px; /* Keeps the theme's rounded look */
-    border: 1px solid rgba(50, 168, 82, 0.3); /* Optional: subtle green border */
 }
 
 
@@ -304,7 +339,7 @@
 
 .big-num {
     font-size: 42px;
-    font-weight: 800;
+    font-weight: 700;
     color: #32a852;
     display: block;
 }
@@ -399,16 +434,427 @@ h3 {
 
 .traction-summary span {
     color: #32a852;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 28px;
 }
 
 
 
 
+/* New for separate revenue slides */
+
+/* Layout for single-topic focus slides */
+.focus-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.stat-list-large {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.stat-list-large li {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #ccc;
+    border-left: 4px solid #32a852;
+    padding-left: 20px;
+}
+
+.stat-list-large li strong {
+    font-size: 36px;
+    color: #fff;
+    display: block;
+}
+
+.focus-card {
+    background: #111;
+    padding: 40px;
+    border-radius: 30px;
+    border: 2px solid #32a852;
+    text-align: center;
+ }
+
+/* Summary Page Styling */
+.summary-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.summary-box {
+    flex: 1;
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.green-text {
+    color: #32a852 !important;
+}
+
+.progress-bar-container.large .progress-bar-bg {
+    height: 60px;
+    border-radius: 30px;
+}
+
+.progress-bar-container.large .progress-bar-fill {
+    font-size: 24px;
+}
+
+
+/* Sidebar container for Card + Image */
+.focus-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between the card and the image */
+}
+
+/* Image styling to match your theme */
+.focus-image-container {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(50, 168, 82, 0.3); /* Subtle green border */
+    background: #000;
+}
+
+.unit-economics-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    max-height: 500px;
+}
+
+.unit-economics-img:hover {
+    opacity: 1;
+}
+
+/* Ensure the grid handles the vertical sidebar correctly */
+.focus-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: flex-start; /* Aligns items to the top */
+    margin-top: 40px;
+}
+
+
+/* Main Grid Setup */
+.split-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Left column slightly narrower than image */
+    gap: 60px;
+    min-height: 500px;
+    align-items: stretch;
+}
+
+/* Left Stack: Stats and Card */
+.left-content-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* This pushes the card to the bottom */
+}
+
+.break-even-bottom {
+    margin-top: 30px;
+    align-self: flex-start;
+    width: 100%;
+    max-width: 400px; /* Keeps the card from getting too wide */
+}
+
+/* Right Side: Hero Image */
+.right-image-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.side-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fills the space nicely */
+    border-radius: 30px;
+    border: 2px solid rgba(50, 168, 82, 0.4);
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Adjusting the large stats for this layout */
+.stat-list-large li {
+    margin-bottom: 20px;
+}
+
+/* .break-even-bottom {
+    margin-bottom: 200px;
+} */
+
+
+/* Add Green Checkmarks to Service Lists */
+.stat-list li {
+    position: relative;
+    padding-left: 35px; /* Create space for the checkmark */
+    margin-bottom: 25px; /* Spacing between service items */
+    list-style: none;
+}
+
+.stat-list li::before {
+    content: '✓'; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #32a852; /* Your signature Robinson Green */
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+/* Next Steps */
+
+/* Milestone Grid */
+.milestone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.milestone-card {
+    background: #0a0a0a;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.milestone-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(50, 168, 82, 0.4);
+}
+
+.highlight-milestone {
+    border: 1px solid #32a852;
+    background: linear-gradient(145deg, #0a0a0a 0%, #051a0b 100%);
+}
+
+.milestone-number {
+    font-family: 'paladins-outline';
+    font-size: 40px;
+    color: #32a852;
+    margin-bottom: 15px;
+    opacity: 0.6;
+}
+
+.milestone-info h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.milestone-info p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #aaa;
+}
+
+.milestone-info strong {
+    color: #32a852;
+}
+
+/* Final CTA Section */
+.final-cta {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.contact-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #666;
+}
+
+.contact-strip .dot {
+    color: #32a852;
+    font-weight: bold;
+}
+
+
+/* Competition Styling */
+
+/* Competition Table */
+.comparison-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.competition-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.competition-table th {
+    padding: 20px;
+    text-align: left;
+    color: #666;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.competition-table td {
+    padding: 20px;
+    background: #111;
+    color: #ccc;
+    font-size: 18px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Rounding the rows */
+.competition-table td:first-child { border-radius: 15px 0 0 15px; border-left: 1px solid rgba(255,255,255,0.05); }
+.competition-table td:last-child { border-radius: 0 15px 15px 0; border-right: 1px solid rgba(255,255,255,0.05); }
+
+/* Robinson Column Highlight */
+.robinson-column {
+    color: #32a852 !important;
+    font-weight: 800;
+}
+
+.robinson-winner {
+    color: #fff !important;
+    font-weight: 700;
+    background: rgba(50, 168, 82, 0.15) !important;
+    border-color: rgba(50, 168, 82, 0.4) !important;
+}
+
+th {
+    font-size: 30;
+}
 
 
 
+
+/* Process Flow Steps */
+.process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 60px 0;
+    gap: 20px;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.step-icon {
+    font-family: 'paladins-solid';
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.highlight-step {
+    color: #32a852;
+    text-shadow: 0 0 10px rgba(50, 168, 82, 0.5);
+}
+
+.step h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.4;
+}
+
+.step-arrow svg {
+    width: 40px;
+    fill: #333;
+}
+
+/* Velocity Gap Visualization */
+.velocity-gap-container {
+    margin-top: 50px;
+    background: #0a0a0a;
+    padding: 40px;
+    border-radius: 30px;
+}
+
+.velocity-track {
+    margin-bottom: 25px;
+}
+
+.velocity-label {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.velocity-bar {
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.competition-bar {
+    width: 100%;
+    background: #222;
+    color: #666;
+    border: 1px dashed #444;
+}
+
+.robinson-bar {
+    width: 15%; /* Visual representation of how much faster you are */
+    background: #32a852;
+    color: #000;
+    min-width: 180px;
+}
+
+.sub-quote {
+    margin-top: 40px;
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    font-size: 18px;
+}
+
+/* Tablet/Mobile Fix for Milestones */
+@media (max-width: 900px) {
+    .milestone-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
