@@ -1614,6 +1614,7 @@ html {
 .slide.is-visible .slide-content {
     opacity: 1;
     transform: translateY(0);
+    
 }
 
 /* Clean up: Remove any previous nth-child transition-delay blocks 
